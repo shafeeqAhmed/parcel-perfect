@@ -1,4 +1,5 @@
 <?php
+
 namespace ParcelPerfect\Requests;
 
 use ParcelPerfect\Entities\Collection;
@@ -18,13 +19,16 @@ class AcceptQuote extends ParcelPerfectBase
      * @return Collection
      * @throws ParcelPerfectException
      */
-    public function accept () {
+    public function accept()
+    {
+
 
         $result = $this->client->__soapCall("Collection_quoteToCollection", array($this->token, $this->buildRequest()));
-        if($result->errorcode != 0){
+
+        if ($result->errorcode != 0) {
             new ParcelPerfectException($result->errormessage, $result->errorcode);
-        }else{
-            if(!$result->results[0]) {
+        } else {
+            if (!$result->results[0]) {
                 throw new ParcelPerfectException('Parcel Perfect returned no results', 400);
             }
             $collect = $result->results[0];
@@ -62,5 +66,9 @@ class AcceptQuote extends ParcelPerfectBase
     {
         $this->quote = $quote;
         return $this;
+    }
+    public function pdf($params)
+    {
+        $result = $this->client->__soapCall("Collection_quoteToCollection", array($this->token, $params));
     }
 }

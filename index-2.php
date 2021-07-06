@@ -59,19 +59,16 @@ print_r($wayBillResponse);
 echo "</pre>";
 
 $qc = new QuoteCollection();
-$qc->setQuoteno($updateResponse->quoteno);
-// $qc->setQuoteno('quoteno');
+// $qc->setQuoteno($updateResponse->quoteno);
+$qc->setQuoteno('quoteno');
 $qc->setStarttime("08:00");
 $qc->setEndtime("17:00");
 $qc->setNotes('Some notes');
-$qc->setPrintWaybill(1);
-$qc->setPrintLabels(1);
+$qc->setPrintWaybill(0);
+$qc->setPrintLabels(0);
 
-$acc = new AcceptQuote($config);
-// $params['quoteno'] = 
-echo "<h1>pdf detail----------------</h1>";
-echo "<pre>";
-print_r($acc->setQuote($qc)->accept());
-echo "</pre>";
-echo "<br/>";
-print_r($updateResponse->quoteno);
+// $acc = new AcceptQuote($config);
+// // $params['quoteno'] = 
+// echo "<h1>pdf detail----------------</h1>";
+// print_r($acc->setQuote($qc)->accept());
+// echo "</pre>";
