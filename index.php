@@ -44,8 +44,8 @@ $quotes = $deliveryRequest->setContents([$itemContents])->setDetails($pickupDeta
 $updateService = new QuoteUpdateService($config);
 $updateResponse = $updateService->setQuote($quotes->getQuoteNumber())->setService($quotes->getRates()[2]->getService())->updateService();
 
-$wayBill = new QuoteToWaybill($config);
-$wayBillResponse = $wayBill->quoteToWaybill($updateResponse->quoteno);
+// $wayBill = new QuoteToWaybill($config);
+// $wayBillResponse = $wayBill->quoteToWaybill($updateResponse->quoteno);
 
 echo "<pre>";
 echo "<h1>List of All Quotes</h1>";
@@ -54,9 +54,9 @@ print_r($quotes);
 echo "<h1>UpdateService Response (service at index 2)</h1>";
 print_r($updateResponse);
 
-echo "<h1>RequestToWayBill Response</h1>";
-print_r($wayBillResponse);
-echo "</pre>";
+// echo "<h1>RequestToWayBill Response</h1>";
+// print_r($wayBillResponse);
+// echo "</pre>";
 
 $qc = new QuoteCollection();
 $qc->setQuoteno($updateResponse->quoteno);
@@ -68,10 +68,7 @@ $qc->setPrintWaybill(1);
 $qc->setPrintLabels(1);
 
 $acc = new AcceptQuote($config);
-// $params['quoteno'] = 
 echo "<h1>pdf detail----------------</h1>";
 echo "<pre>";
 print_r($acc->setQuote($qc)->accept());
 echo "</pre>";
-echo "<br/>";
-print_r($updateResponse->quoteno);

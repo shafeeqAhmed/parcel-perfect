@@ -1,0 +1,7 @@
+Test Endpoints
+
+ http://adpdemo.pperfect.com/ecomService/v17/Json/
+ http://adpdemo.pperfect.com/ecomService/v17/Soap/
+ http://adpdemo.pperfect.com/ecomService/v17/Soap/index.php?wsdl
+
+check parcel-perfect-document.zip for detail documentation of functions
